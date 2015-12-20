@@ -25,6 +25,20 @@ module Bodogem
     end
 
     class Supply
+      def initialize
+        @supply_cards = KingdomCards.all.sample(10)
+        @supply_cards.sort_by!(&:cost)
+        @supply_cards.concat(*BasicTresureCards.all)
+        @supply_cards.concat(*BasicVictoryCards.all)
+        @supply_cards.concat(*BasicTresureCards.all)
+      end
+
+      def list
+        @supply_cards
+      end
+    end
+
+    class KingdomCard
     end
 
     class Player
